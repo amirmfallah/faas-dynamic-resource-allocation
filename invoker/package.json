@@ -1,0 +1,17 @@
+{
+  "name": "openfaas-fn-invoke",
+  "version": "1.0.0",
+  "description": "A simple API call to invoke a openfaas serverless function",
+  "main": "invoke.js",
+  "scripts": {
+    "test": "node invoke.js",
+    "run": "node invoke.js",
+    "run-background": "node invoke.js &"
+  },
+  "author": "Amirmohammad Fallah",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "node-cron": "^3.0.2"
+  }
+}
