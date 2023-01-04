@@ -14,7 +14,7 @@ Horizontal scaling means that the response to increased load is to deploy more 
 
 Vertical Pod Autoscaler (VPA) frees users from the necessity of setting up-to-date resource limits and requests for the containers in their pods. When configured, it will set the requests automatically based on usage and thus allow proper scheduling onto nodes so that appropriate resource amount is available for each pod. It will also maintain ratios between limits and requests that were specified in initial containers configuration.
 
-[](https://norma.ncirl.ie/4549/1/saifalisayyed.pdf)
+[Optimization of Resource Allocation and Prediction Analysis in Serverless Computing using Dynamic Resource Algorithm](https://norma.ncirl.ie/4549/1/saifalisayyed.pdf)
 
 Saifali Sayyed explains how a FaaS resource can be predicted and dynamically allocated using ARMIA statistical model.
 
@@ -81,7 +81,7 @@ $ kubectl get deploy -n openfaas-fn
 $ curl $OPENFAAS_URL:31112/function/qrcode --data "Hello World from OpenFaaS." > qrcode.png
 ```
 
-![ebb57b50-c027-45db-91cb-f9bf5cd2d2ec.png](Auto-scaling%20FaaS%2065c306e7bde644e48ee0942066b2c05f/ebb57b50-c027-45db-91cb-f9bf5cd2d2ec.png)
+![ebb57b50-c027-45db-91cb-f9bf5cd2d2ec.png](static/ebb57b50-c027-45db-91cb-f9bf5cd2d2ec.png)
 
 ## Functions Metrics Aquision
 
@@ -89,7 +89,7 @@ $ curl $OPENFAAS_URL:31112/function/qrcode --data "Hello World from OpenFaaS." >
 
 OpenFaaS functions are created as Kubernetes Pod. They can be found under the `openfaas-fn` namespace in your Kubernetes node. For Kubernetes, the *Metrics API* offers a basic set of metrics to support automatic scaling and similar use cases. This API makes information available about resource usage for node and pod, including metrics for CPU and memory.
 
-![Screen Shot 2023-01-03 at 11.09.52.png](Auto-scaling%20FaaS%2065c306e7bde644e48ee0942066b2c05f/Screen_Shot_2023-01-03_at_11.09.52.png)
+![Screen Shot 2023-01-03 at 11.09.52.png](static/Screen_Shot_2023-01-03_at_11.09.52.png)
 
 The example below demonstrates an API call to Kubernetes Metrics API to recieve information about a `qrcode-go` pod, which was created earlier.
 
@@ -145,7 +145,7 @@ container_memory_working_set_bytes{pod=~"qrcode-.*", image!="", container!="POD"
 rate(container_cpu_usage_seconds_total{pod=~"qrcode-.*", image!="", container!="POD", id=~"/kubepods/.*" }[5m])
 ```
 
-![Screen Shot 2023-01-01 at 17.23.45.png](Auto-scaling%20FaaS%2065c306e7bde644e48ee0942066b2c05f/Screen_Shot_2023-01-01_at_17.23.45.png)
+![Grafana Dashboard](Static/Screen_Shot_2023-01-01_at_17.23.45.png)
 
 ---
 
@@ -219,7 +219,7 @@ model.compile(loss='mae', optimizer='adam')
 
 Then the model was trained, evaluated and tested on the dataset.
 
-![18C7E914-0D9C-4CBA-B8E0-327AC2B55EE4.png](Auto-scaling%20FaaS%2065c306e7bde644e48ee0942066b2c05f/18C7E914-0D9C-4CBA-B8E0-327AC2B55EE4.png)
+![Train/Validation Loss](static/18C7E914-0D9C-4CBA-B8E0-327AC2B55EE4.png)
 
 ---
 
@@ -233,7 +233,7 @@ The trained model was evaluated with MSE, MAE and RMSE measures as listed in the
 | MAE  | 50345.6543715847       | 0.0009084099362412646  |
 | RMSE | 154433.74162607436     | 0.0012123221806720947  |
 
-![EA45B626-E8AE-43E6-AB8E-BE52B0A7E2E2.png](Auto-scaling%20FaaS%2065c306e7bde644e48ee0942066b2c05f/EA45B626-E8AE-43E6-AB8E-BE52B0A7E2E2.png)
+![Expected vs Prediction](static/EA45B626-E8AE-43E6-AB8E-BE52B0A7E2E2.png)
 
 ---
 
@@ -246,9 +246,6 @@ Then we can update function’s resource allocation by manipulating it’s confi
 ```yaml
  qrcode-go:
     lang: go
-    .
-		.
-		.
     limits:
       memory: 40Mi
 			cpu: 100m
