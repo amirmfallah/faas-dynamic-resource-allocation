@@ -1,4 +1,4 @@
-# Auto-scaling FaaS
+# Forecasting FaaS Resource Usage Using LSTM
 
 ## Background Work
 
